@@ -41,6 +41,8 @@ app.delete('/notes/:id', (req, res) => {
   res.json({ message: 'Note deleted', id: req.params.id });
 });
 
+app.use(express.static(path.join(__dirname, '../frontend'))); 
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
