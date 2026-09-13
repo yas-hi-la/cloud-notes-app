@@ -1,5 +1,5 @@
 async function loadNotes() {
-  const response = await fetch('http://13.54.24.121:3000/notes');
+  const response = await fetch('http://16.176.154.156:3000/notes');
   const notes = await response.json();
 
   const list = document.getElementById('notesList');
@@ -12,7 +12,7 @@ async function loadNotes() {
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.addEventListener('click', async () => {
-      await fetch(`http://13.54.24.121:3000/notes/${note.id}`, {
+      await fetch(`http://16.176.154.156:3000/notes/${note.id}`, {
         method: 'DELETE'
       });
       loadNotes();
@@ -26,7 +26,7 @@ async function loadNotes() {
       if (newText === null) {
         return;
       }
-      await fetch(`http://13.54.24.121:3000/notes/${note.id}`, {
+      await fetch(`http://16.176.154.156:3000/notes/${note.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: newText })
@@ -44,8 +44,8 @@ loadNotes();
 const input = document.getElementById('noteInput');
 
 document.getElementById('addBtn').addEventListener('click', async () => {
-  text = input.value;
-  await fetch('http://13.54.24.121:3000/notes', {
+  const text = input.value;
+  await fetch('http://16.176.154.156:3000/notes', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text: text })
